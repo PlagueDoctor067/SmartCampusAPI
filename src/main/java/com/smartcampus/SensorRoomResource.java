@@ -6,17 +6,36 @@ package com.smartcampus;
 
 /**
  *
- * @author 44743
+ * @author Antoni Podlasiak
  */
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
 @Path("/rooms")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class SensorRoomResource {
+    private static Map<String, Room> rooms = new HashMap<>();
     
-}
+    @GET
+    public List<Room> getAllRooms(){
+        return new ArrayList<>(rooms.values());
+    }
+    
+    @POST
+    public Room createRoom(Room room){
+        rooms.put(room.getId(), room);
+        return room;
+    }
+    
+    @GET
+    @Path("/{roomId}")
+    public Room getRoom(@PathParam("roomId") String roomId){
+        return rooms.get(roomId);
+    }
+} 

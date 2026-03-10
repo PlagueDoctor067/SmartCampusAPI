@@ -6,7 +6,7 @@ package com.smartcampus;
 
 /**
  *
- * @author 44743
+ * @author Antoni Podlasiak
  */
 
 import javax.ws.rs.ApplicationPath;
@@ -20,6 +20,7 @@ public class SmartCampusApplication extends Application{
     public Set<Class<?>> getClasses(){
         Set<Class<?>> classes = new HashSet<>();
         classes.add(DiscoveryResource.class);
+        classes.add(SensorRoomResource.class);
         return classes;
     }
     
