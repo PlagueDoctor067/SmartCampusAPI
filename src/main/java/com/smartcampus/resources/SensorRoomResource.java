@@ -46,13 +46,24 @@ public class SensorRoomResource {
     
     @GET
     @Path("/{roomId}")
-    public Room getRoom(@PathParam("roomId") String roomId){
-        return rooms.get(roomId);
+    public Response getRoom(@PathParam("roomId") String roomId){
+        Room room = rooms.get(roomId);
+        if(room == null){
+            ErrorMessage error = new ErrorMessage("Room not found", 404, "doc/rooms");
+            return Response.status(Response.Status.NOT_FOUND).entity(error).build();
+        }
+        return Response.ok(room).build();
     }
     
     @DELETE
     @Path("/{roomId}")
-    public void deleteRoom(@PathParam("roomId") String roomId){
+    public Response deleteRoom(@PathParam("roomId") String roomId){
+        Room room = rooms.get(roomId);
+        if(room == null){
+            ErrorMessage error = new ErrorMessage("Room not found", 404, "doc/rooms");
+            return Response.status(Response.Status.NOT_FOUND).entity(error).build();
+        }
         rooms.remove(roomId);
+        return Response.ok("Room deleted successfully").build();
     }
 } 
