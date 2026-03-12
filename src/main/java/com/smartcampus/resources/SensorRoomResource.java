@@ -23,7 +23,7 @@ import java.util.HashMap;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class SensorRoomResource {
-    private static Map<String, Room> rooms = new HashMap<>();
+    public static Map<String, Room> rooms = new HashMap<>();
     
     @GET
     public List<Room> getAllRooms(){
