@@ -10,8 +10,10 @@ package com.smartcampus.resources;
  */
 
 import com.smartcampus.model.Room;
+import com.smartcampus.model.ErrorMessage;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +31,17 @@ public class SensorRoomResource {
     }
     
     @POST
-    public Room createRoom(Room room){
+    public Response createRoom(Room room){
+        if (room.getId() == null || room.getId().isEmpty()){
+            ErrorMessage error = new ErrorMessage("Room Id can not be empty", 400, "doc/rooms");
+            return Response.status(Response.Status.BAD_REQUEST).entity(error).build();
+        }
+        if (rooms.containsKey(room.getId())){
+            ErrorMessage error = new ErrorMessage("Room with ID already exists", 409,"doc/rooms");
+            return Response.status(Response.Status.CONFLICT).entity(error).build();
+        }
         rooms.put(room.getId(), room);
-        return room;
+        return Response.status(Response.Status.CREATED).entity(room).build();
     }
     
     @GET
