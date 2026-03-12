@@ -6,7 +6,7 @@ package com.smartcampus;
 
 /**
  *
- * @author 44743
+ * @author Antoni Podlasiak
  */
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

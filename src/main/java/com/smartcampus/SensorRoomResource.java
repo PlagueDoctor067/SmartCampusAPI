@@ -38,4 +38,10 @@ public class SensorRoomResource {
     public Room getRoom(@PathParam("roomId") String roomId){
         return rooms.get(roomId);
     }
+    
+    @DELETE
+    @Path("/{roomId}")
+    public void deleteRoom(@PathParam("roomId") String roomId){
+        rooms.remove(roomId);
+    }
 } 
