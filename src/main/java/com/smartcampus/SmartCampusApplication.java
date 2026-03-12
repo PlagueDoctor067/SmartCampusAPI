@@ -9,6 +9,8 @@ package com.smartcampus;
  * @author Antoni Podlasiak
  */
 
+import com.smartcampus.resources.DiscoveryResource;
+import com.smartcampus.resources.SensorRoomResource;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
