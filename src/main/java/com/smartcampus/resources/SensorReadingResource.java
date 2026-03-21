@@ -35,12 +35,12 @@ public class SensorReadingResource {
     public Response getReading(@PathParam("readingId") String readingId){
         Sensor sensor = SensorResource.sensors.get(sensorId);
         if(sensor == null){
-            ErrorMessage error = new ErrorMessage("Sensor with ID: "+sensorId+" not found", 404, "docs/sensors");
+            ErrorMessage error = new ErrorMessage("Sensor with ID: "+sensorId+" not found", 404, "docs/error");
             return Response.status(Response.Status.NOT_FOUND).entity(error).build();
         }
         List<SensorReading> sensorReadings = readings.get(sensorId); 
         if(sensorReadings == null){
-            ErrorMessage error = new ErrorMessage("Reading with ID: "+readingId+" not found", 404, "docs/readings");
+            ErrorMessage error = new ErrorMessage("Reading with ID: "+readingId+" not found", 404, "docs/error");
             return Response.status(Response.Status.NOT_FOUND).entity(error).build();
         }
         for(SensorReading  r  : sensorReadings){
@@ -48,7 +48,7 @@ public class SensorReadingResource {
                 return Response.ok(r).build();
             }
         }
-        ErrorMessage error = new ErrorMessage("Reading with ID: "+readingId+" not found", 404, "docs/readings");
+        ErrorMessage error = new ErrorMessage("Reading with ID: "+readingId+" not found", 404, "docs/error");
         return Response.status(Response.Status.NOT_FOUND).entity(error).build();
     }
     
@@ -56,7 +56,7 @@ public class SensorReadingResource {
     public Response getAllReadings(){
         Sensor sensor = SensorResource.sensors.get(sensorId);
         if(sensor == null){
-            ErrorMessage error = new ErrorMessage("Sensor with ID: "+sensorId+" not found", 404, "docs/sensors");
+            ErrorMessage error = new ErrorMessage("Sensor with ID: "+sensorId+" not found", 404, "docs/error");
             return Response.status(Response.Status.NOT_FOUND).entity(error).build();
         }
         List<SensorReading> sensorReadings = readings.get(sensorId);
@@ -70,15 +70,15 @@ public class SensorReadingResource {
     public Response addReading(SensorReading reading){
         Sensor sensor = SensorResource.sensors.get(sensorId);
         if(sensor == null){
-            ErrorMessage error = new ErrorMessage("Sensor with ID: "+sensorId+" not found", 404, "docs/readings");
+            ErrorMessage error = new ErrorMessage("Sensor with ID: "+sensorId+" not found", 404, "docs/error");
             return Response.status(Response.Status.NOT_FOUND).entity(error).build();
         }
         if(reading.getId() == null || reading.getId().isEmpty()){
-            ErrorMessage error = new ErrorMessage("Reading ID must be provided", 400, "docs/readings");
+            ErrorMessage error = new ErrorMessage("Reading ID must be provided", 400, "docs/error");
             return Response.status(Response.Status.BAD_REQUEST).entity(error).build();
         }
         if(reading.getTimestamp() == 0){
-            ErrorMessage error = new ErrorMessage("Timestamp must be provided", 400, "docs/readings");
+            ErrorMessage error = new ErrorMessage("Timestamp must be provided", 400, "docs/error");
             return Response.status(Response.Status.BAD_REQUEST).entity(error).build();
         }
         if("MAINTENANCE".equalsIgnoreCase(sensor.getStatus())){

@@ -34,11 +34,11 @@ public class SensorRoomResource {
     @POST
     public Response createRoom(Room room){
         if (room.getId() == null || room.getId().isEmpty()){
-            ErrorMessage error = new ErrorMessage("Room Id can not be empty", 400, "doc/rooms");
+            ErrorMessage error = new ErrorMessage("Room Id can not be empty", 400, "doc/error");
             return Response.status(Response.Status.BAD_REQUEST).entity(error).build();
         }
         if (rooms.containsKey(room.getId())){
-            ErrorMessage error = new ErrorMessage("Room with ID already exists", 409,"doc/rooms");
+            ErrorMessage error = new ErrorMessage("Room with ID already exists", 409,"doc/error");
             return Response.status(Response.Status.CONFLICT).entity(error).build();
         }
         rooms.put(room.getId(), room);
@@ -50,7 +50,7 @@ public class SensorRoomResource {
     public Response getRoom(@PathParam("roomId") String roomId){
         Room room = rooms.get(roomId);
         if(room == null){
-            ErrorMessage error = new ErrorMessage("Room not found", 404, "doc/rooms");
+            ErrorMessage error = new ErrorMessage("Room not found", 404, "doc/error");
             return Response.status(Response.Status.NOT_FOUND).entity(error).build();
         }
         return Response.ok(room).build();
@@ -61,7 +61,7 @@ public class SensorRoomResource {
     public Response deleteRoom(@PathParam("roomId") String roomId){
         Room room = rooms.get(roomId);
         if(room == null){
-            ErrorMessage error = new ErrorMessage("Room not found", 404, "doc/rooms");
+            ErrorMessage error = new ErrorMessage("Room not found", 404, "doc/error");
             return Response.status(Response.Status.NOT_FOUND).entity(error).build();
         }
         if(!room.getSensorIds().isEmpty()){
