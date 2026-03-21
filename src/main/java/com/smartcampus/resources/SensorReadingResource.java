@@ -11,6 +11,7 @@ package com.smartcampus.resources;
 import com.smartcampus.model.SensorReading;
 import com.smartcampus.model.Sensor;
 import com.smartcampus.model.ErrorMessage;
+import com.smartcampus.exception.SensorUnavailableException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -79,6 +80,9 @@ public class SensorReadingResource {
         if(reading.getTimestamp() == 0){
             ErrorMessage error = new ErrorMessage("Timestamp must be provided", 400, "docs/readings");
             return Response.status(Response.Status.BAD_REQUEST).entity(error).build();
+        }
+        if("MAINTENANCE".equalsIgnoreCase(sensor.getStatus())){
+            throw new SensorUnavailableException("Sensor with ID: "+sensor.getId()+" is currently under maintenace");
         }
         readings.putIfAbsent(sensorId, new ArrayList<>());
         readings.get(sensorId).add(reading);

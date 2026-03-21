@@ -10,7 +10,7 @@ package com.smartcampus.resources;
  */
 import com.smartcampus.model.Room;
 import com.smartcampus.model.Sensor;
-import com.smartcampus.model.ErrorMessage;
+import com.smartcampus.exception.LinkedResourceNotFoundException;
 import java.util.ArrayList;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -45,8 +45,7 @@ public class SensorResource {
     public Response createSensor(Sensor sensor){
         Room room = SensorRoomResource.rooms.get(sensor.getRoomId());
         if(room == null){
-            ErrorMessage error = new ErrorMessage("Room with ID:"+sensor.getRoomId()+" does not exist",422,"doc/sensors");
-            return Response.status(422).entity(error).build();
+            throw new LinkedResourceNotFoundException("Room with ID: "+sensor.getRoomId()+" does not exist");
         }
         sensors.put(sensor.getId(), sensor);
         room.getSensorIds().add(sensor.getId());

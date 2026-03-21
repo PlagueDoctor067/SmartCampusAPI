@@ -11,6 +11,7 @@ package com.smartcampus.resources;
 
 import com.smartcampus.model.Room;
 import com.smartcampus.model.ErrorMessage;
+import com.smartcampus.exception.RoomNotEmptyException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -62,6 +63,9 @@ public class SensorRoomResource {
         if(room == null){
             ErrorMessage error = new ErrorMessage("Room not found", 404, "doc/rooms");
             return Response.status(Response.Status.NOT_FOUND).entity(error).build();
+        }
+        if(!room.getSensorIds().isEmpty()){
+            throw new RoomNotEmptyException("Room with ID: "+room.getId()+" still has sensors");
         }
         rooms.remove(roomId);
         return Response.ok("Room deleted successfully").build();
