@@ -14,3 +14,12 @@ Hypermedia is considerd a hallmark of advanced RESTful designe beause it transfo
 
 ##1.Room Resource Implementation
 
+Returning only room IDs uses less bandwith as the payload will be smaller. However it will require the client to send multiple requests to get the full room detail which will increase the client-side processing and latency. Returtning a full room object will use more bandwidth but it will provide all the detail for the room in one request. This reduces the requests and simplefies the client logic.
+
+##2. Room Deletion & Safety Logic
+
+Yes the DELETE operation is idempotent because repeted requests reuslte in the same final system state. The first DELETE request will remove the room data if the room exist and return a success. If the client mistakently sent the same DELETE request when the room is already deleted the method will return a 404 response without changeing anything. Althought the respone differs, no addition side effects happend, making the operation remain idempotent.
+
+#Part 3: Sensor Operations & Linking 
+
+##1. Sensor Resource & Integrity
