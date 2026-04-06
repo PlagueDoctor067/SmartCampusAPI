@@ -23,3 +23,8 @@ Yes the DELETE operation is idempotent because repeted requests reuslte in the s
 #Part 3: Sensor Operations & Linking 
 
 ##1. Sensor Resource & Integrity
+
+Using the @Consumes(MediaType.APPLICATION_JSON) will restrict the POST method to only accept requests with the content type application/json. If the client tries to send a request with a different format such as text/plain or application/xml JAX-RS will treat this a an unknow format and return a 415 error. This will prevent the method from executing and ensure only the correct format of json will be inputted.
+
+##2. Filtered Retrieval & Search
+
