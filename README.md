@@ -28,3 +28,9 @@ Using the @Consumes(MediaType.APPLICATION_JSON) will restrict the POST method to
 
 ##2. Filtered Retrieval & Search
 
+Using @QueryParam for filtering is generally superior because queary paramiters are used for filtering and searching within a collective without changing the recource identity. The base path /sensors will not change and still represent the same collection while the query will narrow down a specific result. For example, using a path like /sensors/type/CO2 which will treat the filter as a diffrent resource structure which reduces fexebility and makes it harder to retrieve multiple results.
+
+#Part 4: Deep Nesting with Sub - Resources
+
+##1. The Sub-Resource Locator Pattern
+
