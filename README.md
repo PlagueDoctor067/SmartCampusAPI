@@ -34,4 +34,8 @@ Using @QueryParam for filtering is generally superior because queary paramiters 
 
 ##1. The Sub-Resource Locator Pattern
 
-The sub-resource locater pattern improves API architecture by delegating responsebilitys for nested resources to sperate classes which helps manage complexity and improves maintainability.
+The sub-resource locater pattern improves API architecture by delegating responsebilitys for nested resources to sperate classes which helps manage complexity and improves maintainability. Instead of having to define every nessted path in one large controller, the parent resource will handle the main entity of the request and pass the rest forward to the dedecated sub-resource class. This seperation keeps each class focused on a specific part of the API. This makes the code easier to read, test and extend. It also reduces duplication and allow multiple developers to work on diffrent resources independently. Using sub-resource locater will stop controler classes from becoming too big. This leads to the API to being cleaner and more scalable.
+
+#Part 5: Advanced Error Handling, Exception Mapping & Logging
+
+##2. Dependency Validation 
