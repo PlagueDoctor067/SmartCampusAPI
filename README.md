@@ -34,3 +34,4 @@ Using @QueryParam for filtering is generally superior because queary paramiters 
 
 ##1. The Sub-Resource Locator Pattern
 
+The sub-resource locater pattern improves API architecture by delegating responsebilitys for nested resources to sperate classes which helps manage complexity and improves maintainability.
