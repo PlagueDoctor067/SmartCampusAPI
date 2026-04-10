@@ -41,3 +41,6 @@ The sub-resource locater pattern improves API architecture by delegating respons
 ##2. Dependency Validation 
 
 A HTTP 422 error is more acurate then a 404 error when the request is valid but it contains a logical error like a missing reference inside a valid JSON payload. A 404 error means that the requested endpoint or url does not exist, where as a 422 error means that the request was understood by the server but it can not be processed because the data is invalid. Returning a 422 error will clearly comunicate to the client where the problem lies. 
+
+##4. The Global Safety Net 
+
