@@ -44,3 +44,8 @@ A HTTP 422 error is more acurate then a 404 error when the request is valid but 
 
 ##4. The Global Safety Net 
 
+Exposing the java stack traces to the API consumers is risky because it will reveal the internal details such as the class names, package structure, file paths and call methods. An attacker could use this information to descover vulnrabilitys and make targeted attacks. Returning a generic error message instead this helps to prevent information leakage and improve security.
+
+##5. API Request & Response Logging Filters
+
+Using JAX-RS filters is beneficial because it will centralize the functionality into one insted of having to use a Logger.info() statement inside every single recorce class. This will reduces the codes repetition and will keep classes cleaner and more readable and will make a consistent logging for both requests and responses. Filters are also easier to maintain while manual logging will require updating everything and increase the risk of inconsistencies or missed cases. 
