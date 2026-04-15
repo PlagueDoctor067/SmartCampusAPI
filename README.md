@@ -1,5 +1,30 @@
 Antoni Podlasiak w1984268
 
+Overview
+
+The Smart Campus API is a RESTful web service designed for managing rooms, sensors and sensor readings within a university campus, it utilizes JSON as its data format with the base path /api/v1. This API consists of three main resource classes: rooms, sensors and sensor readings with a hierarchical relationship where rooms contain sensors while sensors contain readings. The API uses the methods GET, POST and DELETE to retrieve, create and delete data respectively. The integrity of the data is assured through not allowing sensors to be created in non-existing rooms and rooms not being able to be deleted if sensors still exist within them while using proper HTTP status codes. There is also a discovery endpoint that contains the API's metadata, it also uses custom exceptions and structured error messages. Furthermore, it contains a logger filter that record all incoming requests and outgoing responses which makes the system easier to debug, maintain and extend.
+
+Build and Run Instructions
+
+1. Open the project
+   Lanch NetBeans and open the SmartCampusAPI project
+   
+2.Configure Tomcat server
+  Go to Services Server and click Add Server, choose Apache Tomcat and provide the installation directory
+
+3.Clean and build the project
+  Right-click the project and choose Clean and Build to compile the code
+
+4.Run the project
+  Right-click on the server and choose run then Right-click on the project and click run
+
+5.Check the endpoint
+  Chech the discovery endpoit at http://localhost:8080/SmartCampusAPI/api/v1
+
+Curl Commands
+
+Report
+
 #Part 1: Service Architecture & Setup
 
 ##1. Project & Application Configuration
