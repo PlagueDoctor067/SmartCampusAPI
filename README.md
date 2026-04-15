@@ -27,7 +27,7 @@ The Smart Campus API is a RESTful web service designed for managing rooms, senso
       curl http://localhost:8080/SmartCampusAPI/api/v1
 
 ## 2. POST a room
-      curl -X http://localhost:8080/SmartCampusAPI/api/v1/rooms \
+      curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/rooms \
       -H "Content-Type: application/json" \
       -d '{"id": "LAB-01", "name": "Computer Lab", "capacity": 30}'
 
@@ -35,7 +35,7 @@ The Smart Campus API is a RESTful web service designed for managing rooms, senso
       curl http://localhost:8080/SmartCampusAPI/api/v1/rooms
 
 ## 4. POST a sensor
-      curl -X http://localhost:8080/SmartCampusAPI/api/v1 \
+      curl -X POST http://localhost:8080/SmartCampusAPI/api/v1 \
       -H "Content-Type: application/json" \
       -d '{"id": "LABSEN-01", "type": "Temperature", "status": "ACTIVE", "currentValue": 14, "roomId": "LAB-01"}'
 
