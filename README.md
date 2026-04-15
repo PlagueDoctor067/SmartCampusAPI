@@ -16,10 +16,10 @@ The Smart Campus API is a RESTful web service designed for managing rooms, senso
    Right-click the project and choose Clean and Build to compile the code
 
 4. Run the project:
-   Right-click on the server and choose run then Right-click on the project and click run
+   Right-click on the server and choose start, then Right-click on the project and click run
 
 5. Check the endpoint:
-   Check the discovery endpoit at http://localhost:8080/SmartCampusAPI/api/v1
+   Check the discovery endpoit at: http://localhost:8080/SmartCampusAPI/api/v1
 
 # Curl Commands
 
