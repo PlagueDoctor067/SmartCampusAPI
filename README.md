@@ -23,6 +23,25 @@ Build and Run Instructions
 
 Curl Commands
 
+# 1. GET discovery endpoint
+      curl http://localhost:8080/SmartCampusAPI/api/v1
+
+# 2. POST a room
+      curl -X http://localhost:8080/SmartCampusAPI/api/v1/rooms \
+      -H "Content-Type: application/json" \
+      -d '{"id": "LAB-01", "name": "Computer Lab", "capacity": 30}'
+
+# 3. GET all rooms
+      curl http://localhost:8080/SmartCampusAPI/api/v1/rooms
+
+# 4. POST a sensor
+      curl -X http://localhost:8080/SmartCampusAPI/api/v1 \
+      -H "Content-Type: application/json" \
+      -d '{"id": "LABSEN-01", "type": "Temperature", "status": "ACTIVE", "currentValue": 14, "roomId": "LAB-01"}'
+
+# 5. GET sensor by type
+      curl http://localhost:8080/SmartCampusAPI/api/v1/sensors?type=temperature
+      
 Report
 
 #Part 1: Service Architecture & Setup
