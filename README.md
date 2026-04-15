@@ -9,17 +9,17 @@ Build and Run Instructions
 1. Open the project
    Lanch NetBeans and open the SmartCampusAPI project
    
-2.Configure Tomcat server
-  Go to Services Server and click Add Server, choose Apache Tomcat and provide the installation directory
+2. Configure Tomcat server
+   Go to Services Server and click Add Server, choose Apache Tomcat and provide the installation directory
 
-3.Clean and build the project
-  Right-click the project and choose Clean and Build to compile the code
+3. Clean and build the project
+   Right-click the project and choose Clean and Build to compile the code
 
-4.Run the project
-  Right-click on the server and choose run then Right-click on the project and click run
+4. Run the project
+   Right-click on the server and choose run then Right-click on the project and click run
 
-5.Check the endpoint
-  Chech the discovery endpoit at http://localhost:8080/SmartCampusAPI/api/v1
+5. Check the endpoint
+   Check the discovery endpoit at http://localhost:8080/SmartCampusAPI/api/v1
 
 Curl Commands
 
