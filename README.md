@@ -1,4 +1,8 @@
-# Antoni Podlasiak w1984268
+# 5COSC022W Client-Server Architectures
+
+Name: Antoni Podlasiak
+
+Student ID: w1984268
 
 # Overview
 
